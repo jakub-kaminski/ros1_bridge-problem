@@ -7,6 +7,7 @@ This repository is an attempt to build Ubuntu 22.04 (jammy) with ROS2 humble, We
 ### Important notes:
 Using ros1_bridge with upstream ROS on Ubuntu: https://docs.ros.org/en/humble/How-To-Guides/Using-ros1_bridge-Jammy-upstream.html
 *Current image build consumes 16GB and takes ~1.5h to build (ROS2 from sources).*
+Please note that "ros1_bridge" and "rosbridge" are totally different unrelated packages.
 
 Please consider building docker image targets "dev" and "dev-2"
 
@@ -49,5 +50,6 @@ dockeruser@dell:~/ros2_ws$ ros2 run ros1_bridge dynamic_bridge
 [ros2run]: Process exited with failure 127
 ```
 
+If you are able to get "ERROR UNABLE TO CONTACT LOCAL HOST 13111..." at ros1_bridge startup, it means that ros1_bridge will work well if set up correctly. If you are able to get "unable" error at the same time when workspace is built correctly, you have solved the problems.
 
 *How to build the workspace packages and also be able to use ros1_bridge?*
