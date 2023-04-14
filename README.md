@@ -6,7 +6,7 @@ This repository is an attempt to build Ubuntu 22.04 (jammy) with ROS2 humble, We
 
 ### Important notes:
 Using ros1_bridge with upstream ROS on Ubuntu: https://docs.ros.org/en/humble/How-To-Guides/Using-ros1_bridge-Jammy-upstream.html
-Current image build consumes 16GB and takes ~1.5h to build (ROS2 from sources).
+*Current image build consumes 16GB and takes ~1.5h to build (ROS2 from sources).*
 
 Please consider building docker image targets "dev" and "dev-2"
 
