@@ -1,0 +1,4 @@
+#export HISTFILE='/dockeruser/.bash_history'
+
+source /opt/ros/humble/setup.bash
+source /dockeruser/ros2_ws/install/local_setup.bash # expected to fail before workspace build

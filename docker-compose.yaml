@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  container_1:
+    image: osrf/ros:noetic-desktop-full
+    container_name: ros1_container
+    entrypoint: "/ros_entrypoint_run_talker.sh /bin/bash"
+    volumes:
+      #- ./ros_entrypoint.sh:/ros_entrypoint.sh
+      - ./entrypoints/ros_entrypoint_run_talker.sh:/ros_entrypoint_run_talker.sh
+    #command: /ros_entrypoint_run_talker.sh
+    networks:
+      - my_custom_network
+
+  webots-container:
+    image: ros1_bridge-problem-image
+    container_name: ros2_container
+    restart: unless-stopped
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+    environment:
+      - DISPLAY=${DISPLAY}
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - /tmp/.X11-unix/:/tmp/.X11-unix
+      - /home/jakub/webots_ws:/dockeruser/ros2_ws
+      #- ./ros2_humble_entrypoint.sh:/ros2_humble_entrypoint.sh
+      - ./entrypoints/ros2_humble_run_listener.sh:/ros2_humble_run_listener.sh
+    runtime: nvidia
+    entrypoint: "/ros2_humble_run_listener.sh /bin/bash"
+    networks:
+      - my_custom_network
+
+networks:
+  my_custom_network:
